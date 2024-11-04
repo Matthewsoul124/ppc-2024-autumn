@@ -10,8 +10,6 @@ TEST(Parallel_Operations_MPI, Test_Count_Violations) {
   boost::mpi::communicator world;
   std::vector<int> global_vec;
   std::vector<int32_t> global_violations(1, 0);
-  
-  // Create TaskData
   std::shared_ptr<ppc::core::TaskData> taskDataPar = std::make_shared<ppc::core::TaskData>();
 
   if (world.rank() == 0) {
@@ -87,8 +85,7 @@ TEST(Parallel_Operations_MPI, Test_Count_Violations_2) {
     testMpiTaskSequential.pre_processing();
     testMpiTaskSequential.run();
     testMpiTaskSequential.post_processing();
-
-  ASSERT_EQ(reference_violations[0], global_violations[0]);
+    ASSERT_EQ(reference_violations[0], global_violations[0]);
   }
 }
 
