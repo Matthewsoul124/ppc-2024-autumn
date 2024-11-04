@@ -7,7 +7,6 @@
 #include "core/perf/include/perf.hpp"
 #include "mpi/example/include/ops_mpi.hpp"
 
-
 /*
 TEST(mpi_example_perf_test, test_pipeline_run) {
   boost::mpi::communicator world;
