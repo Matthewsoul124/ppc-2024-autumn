@@ -1,21 +1,20 @@
 // Copyright 2024 Nesterov Alexander
 #include "seq/fyodorov_m_num_of_orderly_violations/include/ops_seq.hpp"
 
-#include <vector>
 #include <algorithm>
+#include <vector>
 namespace fyodorov_m_num_of_orderly_violations_seq {
 
 bool TestTaskSequential::pre_processing() {
-  input_.assign(reinterpret_cast<int*>(taskData->inputs[0]), reinterpret_cast<int*>(taskData->inputs[0]) + taskData->inputs_count[0]);
+  input_.assign(reinterpret_cast<int*>(taskData->inputs[0]),
+                reinterpret_cast<int*>(taskData->inputs[0]) + taskData->inputs_count[0]);
   violations_count = 0;
   return true;
 }
 
-bool TestTaskSequential::validation() {
-    return taskData->inputs_count[0] > 0 && taskData->outputs_count[0] == 1;
-}
+bool TestTaskSequential::validation() { return taskData->inputs_count[0] > 0 && taskData->outputs_count[0] == 1; }
 
-/* 
+/*
 bool TestTaskSequential::validation() {
   return !input_.empty() && taskData->inputs_count[0]>0;
 }
@@ -34,4 +33,4 @@ bool TestTaskSequential::post_processing() {
   return true;
 }
 
-} 
+}  // namespace fyodorov_m_num_of_orderly_violations_seq

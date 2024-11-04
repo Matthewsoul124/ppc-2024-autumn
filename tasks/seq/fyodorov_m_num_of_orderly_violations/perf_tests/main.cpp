@@ -1,8 +1,8 @@
 // Copyright 2023 Nesterov Alexander
 #include <gtest/gtest.h>
 
-#include <vector>
 #include <chrono>
+#include <vector>
 
 #include "core/perf/include/perf.hpp"
 #include "seq/fyodorov_m_num_of_orderly_violations/include/ops_seq.hpp"
@@ -25,7 +25,7 @@ TEST(sequential_fyodorov_m_num_of_orderly_violations_perf_test, test_pipeline_ru
   auto testTaskSequential = std::make_shared<fyodorov_m_num_of_orderly_violations_seq::TestTaskSequential>(taskDataSeq);
 
   auto perfAttr = std::make_shared<ppc::core::PerfAttr>();
-  perfAttr->num_running = 10; 
+  perfAttr->num_running = 10;
   const auto t0 = std::chrono::high_resolution_clock::now();
   perfAttr->current_timer = [&] {
     auto current_time_point = std::chrono::high_resolution_clock::now();
@@ -38,11 +38,11 @@ TEST(sequential_fyodorov_m_num_of_orderly_violations_perf_test, test_pipeline_ru
   auto perfAnalyzer = std::make_shared<ppc::core::Perf>(testTaskSequential);
   perfAnalyzer->pipeline_run(perfAttr, perfResults);
   ppc::core::Perf::print_perf_statistic(perfResults);
-  ASSERT_EQ(0, out[0]); 
+  ASSERT_EQ(0, out[0]);
 }
 
 TEST(sequential_fyodorov_m_num_of_orderly_violations_perf_test, test_task_run) {
-  const int count = 10000; 
+  const int count = 10000;
 
   std::vector<int> in(count);
   for (int i = 0; i < count; ++i) {
@@ -59,7 +59,7 @@ TEST(sequential_fyodorov_m_num_of_orderly_violations_perf_test, test_task_run) {
   auto testTaskSequential = std::make_shared<fyodorov_m_num_of_orderly_violations_seq::TestTaskSequential>(taskDataSeq);
 
   auto perfAttr = std::make_shared<ppc::core::PerfAttr>();
-  perfAttr->num_running = 10; 
+  perfAttr->num_running = 10;
   const auto t0 = std::chrono::high_resolution_clock::now();
   perfAttr->current_timer = [&] {
     auto current_time_point = std::chrono::high_resolution_clock::now();
@@ -72,12 +72,10 @@ TEST(sequential_fyodorov_m_num_of_orderly_violations_perf_test, test_task_run) {
   auto perfAnalyzer = std::make_shared<ppc::core::Perf>(testTaskSequential);
   perfAnalyzer->task_run(perfAttr, perfResults);
   ppc::core::Perf::print_perf_statistic(perfResults);
-  ASSERT_EQ(0, out[0]); 
+  ASSERT_EQ(0, out[0]);
 }
-
 
 // int main(int argc, char **argv) {
 //   testing::InitGoogleTest(&argc, argv);
 //   return RUN_ALL_TESTS();
 // }
-

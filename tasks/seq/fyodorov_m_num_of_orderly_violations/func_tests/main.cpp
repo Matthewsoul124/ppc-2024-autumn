@@ -16,27 +16,26 @@ TEST(fyodorov_m_num_of_orderly_violations_seq, Test_EmptyVector) {
   taskDataSeq->outputs_count.emplace_back(out.size());
 
   fyodorov_m_num_of_orderly_violations_seq::TestTaskSequential testTaskSequential(taskDataSeq);
-  ASSERT_EQ(testTaskSequential.validation(), false); 
+  ASSERT_EQ(testTaskSequential.validation(), false);
 }
 
 TEST(OrderlyViolations, NoViolations) {
-    std::vector<int> in = {1, 2, 3, 4, 5};
-    std::vector<int> out(1, 0);
+  std::vector<int> in = {1, 2, 3, 4, 5};
+  std::vector<int> out(1, 0);
 
-    auto taskDataSeq = std::make_shared<ppc::core::TaskData>();
-    taskDataSeq->inputs.emplace_back(reinterpret_cast<uint8_t *>(in.data()));
-    taskDataSeq->inputs_count.emplace_back(in.size());  
-    taskDataSeq->outputs.emplace_back(reinterpret_cast<uint8_t *>(out.data()));
-    taskDataSeq->outputs_count.emplace_back(out.size());
+  auto taskDataSeq = std::make_shared<ppc::core::TaskData>();
+  taskDataSeq->inputs.emplace_back(reinterpret_cast<uint8_t *>(in.data()));
+  taskDataSeq->inputs_count.emplace_back(in.size());
+  taskDataSeq->outputs.emplace_back(reinterpret_cast<uint8_t *>(out.data()));
+  taskDataSeq->outputs_count.emplace_back(out.size());
 
-    fyodorov_m_num_of_orderly_violations_seq::TestTaskSequential testTaskSequential(taskDataSeq);
-    ASSERT_TRUE(testTaskSequential.validation());  
-    testTaskSequential.pre_processing();           
-    testTaskSequential.run();                       
-    testTaskSequential.post_processing();          
-    ASSERT_EQ(out[0], 0);                          
+  fyodorov_m_num_of_orderly_violations_seq::TestTaskSequential testTaskSequential(taskDataSeq);
+  ASSERT_TRUE(testTaskSequential.validation());
+  testTaskSequential.pre_processing();
+  testTaskSequential.run();
+  testTaskSequential.post_processing();
+  ASSERT_EQ(out[0], 0);
 }
-
 
 TEST(fyodorov_m_num_of_orderly_violations_seq, Test_SingleElementVector) {
   std::vector<int> in = {5};
@@ -53,7 +52,7 @@ TEST(fyodorov_m_num_of_orderly_violations_seq, Test_SingleElementVector) {
   testTaskSequential.pre_processing();
   testTaskSequential.run();
   testTaskSequential.post_processing();
-  ASSERT_EQ(0, out[0]); 
+  ASSERT_EQ(0, out[0]);
 }
 
 TEST(fyodorov_m_num_of_orderly_violations_seq, Test_OrderedVector) {
@@ -71,7 +70,7 @@ TEST(fyodorov_m_num_of_orderly_violations_seq, Test_OrderedVector) {
   testTaskSequential.pre_processing();
   testTaskSequential.run();
   testTaskSequential.post_processing();
-  ASSERT_EQ(0, out[0]); 
+  ASSERT_EQ(0, out[0]);
 }
 
 TEST(fyodorov_m_num_of_orderly_violations_seq, Test_UnorderedVector) {
@@ -89,7 +88,7 @@ TEST(fyodorov_m_num_of_orderly_violations_seq, Test_UnorderedVector) {
   testTaskSequential.pre_processing();
   testTaskSequential.run();
   testTaskSequential.post_processing();
-  ASSERT_EQ(1, out[0]); 
+  ASSERT_EQ(1, out[0]);
 }
 
 TEST(fyodorov_m_num_of_orderly_violations_seq, Test_VectorWithRepeatingElements) {
@@ -107,7 +106,7 @@ TEST(fyodorov_m_num_of_orderly_violations_seq, Test_VectorWithRepeatingElements)
   testTaskSequential.pre_processing();
   testTaskSequential.run();
   testTaskSequential.post_processing();
-  ASSERT_EQ(0, out[0]); 
+  ASSERT_EQ(0, out[0]);
 }
 
 // int main(int argc, char **argv) {

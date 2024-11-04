@@ -55,7 +55,7 @@ bool fyodorov_m_num_of_orderly_violations_mpi::TestMPITaskSequential::post_proce
 
 bool fyodorov_m_num_of_orderly_violations_mpi::TestMPITaskParallel::pre_processing() {
   internal_order_test();
-   unsigned int delta = 0;
+  unsigned int delta = 0;
   if (world.rank() == 0) {
     delta = taskData->inputs_count[0] / world.size();
   }
@@ -85,7 +85,7 @@ bool fyodorov_m_num_of_orderly_violations_mpi::TestMPITaskParallel::pre_processi
 
 bool fyodorov_m_num_of_orderly_violations_mpi::TestMPITaskParallel::validation() {
   internal_order_test();
-   if (world.rank() == 0) {
+  if (world.rank() == 0) {
     // Check count elements of output
     return taskData->outputs_count[0] == 1;
   }
