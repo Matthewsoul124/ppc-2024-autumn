@@ -380,7 +380,7 @@ TEST(mpi_perf_test, test_task_run) {
     std::cout << "Execution time: " << duration << " ms" << std::endl;
   }
 }
-
+/*
 int main(int argc, char** argv) {
   // Инициализация MPI
   boost::mpi::environment env(argc, argv);
@@ -395,3 +395,4 @@ int main(int argc, char** argv) {
 
   return result;
 }
+*/
